@@ -1,45 +1,54 @@
 package org.example.day2;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
 
-import java.util.ArrayList;
-import java.nio.file.*;
 public class day2 {
-    private static final String INP_PATH = "/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day2/data02.txt";
-    private static final String SEP = "\s";
 
-    public static void main(String args[]) {
-        ArrayList<ArrayList<Integer>> reports = getReports();
-        int safeCount = countSafeReports(reports);
-        System.out.println(safeCount);
-    }
+    public static void main(String[] args) {
+        String filePath = "/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day2/data02.txt"; // Zmień na właściwą ścieżkę
 
-    private static ArrayList<ArrayList<Integer>> getReports() {
-        ArrayList<ArrayList<Integer>> output = new ArrayList<>();
-        for (String line : FileIO.getLinesOf(INP_PATH)) {
-            ArrayList<Integer> report = new ArrayList<>();
-            for (String s : line.split(SEP))
-                report.add(Integer.valueOf(s));
-            output.add(report);
+        try {
+            List<String> reports = Files.readAllLines(Paths.get(filePath));
+
+            int safeCount = 0;
+
+            for (String report : reports) {
+                if (isSafe(report)) {
+                    safeCount++;
+                }
+            }
+
+            System.out.println("Liczba bezpiecznych raportów: " + safeCount);
+
+        } catch (IOException e) {
+            System.out.println("Błąd podczas wczytywania pliku: " + e.getMessage());
+            e.printStackTrace();
         }
-        return output;
     }
+    public static boolean isSafe(String report) {
+        String[] parts = report.split(" ");
+        int[] levels = Arrays.stream(parts).mapToInt(Integer::parseInt).toArray();
 
-    private static int countSafeReports(ArrayList<ArrayList<Integer>> reports) {
-        int output = 0;
-        for (ArrayList<Integer> report : reports)
-            if (isSafe(report)) output++;
-        return output;
-    }
+        boolean increasing = true;
+        boolean decreasing = true;
 
-    private static boolean isSafe(ArrayList<Integer> report) {
-        boolean isIncr = true;
-        boolean isDecr = true;
-        for (int i = 0; i < report.size() - 1; i++) {
-            int diff = report.get(i) - report.get(i+1);
-            int absDiff = Math.abs(diff);
-            isIncr &= diff > 0;
-            isDecr &= diff < 0;
-            if (absDiff < 1 || absDiff > 3 || (!isIncr && !isDecr)) return false;
+        for (int i = 1; i < levels.length; i++) {
+            int diff = levels[i] - levels[i - 1];
+
+            if (diff < -3 || diff > 3 || diff == 0) {
+                return false; // Różnica spoza zakresu lub brak zmiany
+            }
+
+            if (diff > 0) {
+                decreasing = false; // Jeśli jest wzrost, przestaje być malejący
+            } else if (diff < 0) {
+                increasing = false; // Jeśli jest spadek, przestaje być rosnący
+            }
         }
-        return true;
+
+        return increasing || decreasing; // Musi być tylko jeden kierunek
     }
 }
