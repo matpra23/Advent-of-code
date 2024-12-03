@@ -2,13 +2,13 @@ package org.example.day1;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class day1 {
     public static void main(String[] args) throws FileNotFoundException {
         List<Integer> one = new ArrayList<>();
         List<Integer> two = new ArrayList<>();
         //List<Integer> distances = new ArrayList<>();
 
-        File file = new File("/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/data01.txt");
+        File file = new File("/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day1/data01.txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
             String data = scanner.nextLine();
