@@ -14,6 +14,7 @@ public class day1part2 {
 
     private static ArrayList<ArrayList<Integer>> getReports() {
         ArrayList<ArrayList<Integer>> output = new ArrayList<>();
+
         for (String line : FileIO.getLinesOf(INP_PATH)) {
             ArrayList<Integer> report = new ArrayList<>();
             for (String s : line.split(SEP))
