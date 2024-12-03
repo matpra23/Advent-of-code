@@ -9,13 +9,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class day3 {
+    private static final String filePath = "/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day3/data03.txt";
+    private static final Pattern pattern = Pattern.compile("mul\\((\\d+),(\\d+)\\)");
     public static void main(String[] args) {
-        String filePath = "/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day3/data03.txt";
         BigInteger result = BigInteger.ZERO;
         try {
             List<String> lines = Files.readAllLines(Paths.get(filePath));
             for (String line : lines) {
-                Pattern pattern = Pattern.compile("mul\\((\\d+),(\\d+)\\)");
                 Matcher m = pattern.matcher(line);
                 while (m.find()) {
                     int val1 = Integer.parseInt(m.group(1));

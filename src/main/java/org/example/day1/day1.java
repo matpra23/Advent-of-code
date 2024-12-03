@@ -3,12 +3,11 @@ import java.io.*;
 import java.util.*;
 
 public class day1 {
+    private static final File file = new File("/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day1/data01.txt");
     public static void main(String[] args) throws FileNotFoundException {
         List<Integer> one = new ArrayList<>();
         List<Integer> two = new ArrayList<>();
         //List<Integer> distances = new ArrayList<>();
-
-        File file = new File("/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day1/data01.txt");
         Scanner scanner = new Scanner(file);
         while (scanner.hasNextLine()) {
             String data = scanner.nextLine();

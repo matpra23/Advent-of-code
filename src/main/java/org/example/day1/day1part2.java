@@ -1,11 +1,14 @@
 package org.example.day1;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 
 public class day1part2 {
-    private static final String INP_PATH = "/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day2/data02.txt";
     private static final String SEP = "\s";
-
+    private static final String filePath = "/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day3/data03.txt";
     public static void main(String args[]) {
         ArrayList<ArrayList<Integer>> reports = getReports();
         int safeCount = countSafeReports(reports);
@@ -14,12 +17,18 @@ public class day1part2 {
 
     private static ArrayList<ArrayList<Integer>> getReports() {
         ArrayList<ArrayList<Integer>> output = new ArrayList<>();
-
-        for (String line : FileIO.getLinesOf(INP_PATH)) {
-            ArrayList<Integer> report = new ArrayList<>();
-            for (String s : line.split(SEP))
-                report.add(Integer.valueOf(s));
-            output.add(report);
+        try{
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
+            for (String line : lines) {
+                ArrayList<Integer> report = new ArrayList<>();
+                for (String s : line.split(SEP))
+                    report.add(Integer.valueOf(s));
+                output.add(report);
+            }
+            return output;
+        }catch(IOException e){
+            System.out.println("Error while loading in file: " + e.getMessage());
+            e.printStackTrace();
         }
         return output;
     }

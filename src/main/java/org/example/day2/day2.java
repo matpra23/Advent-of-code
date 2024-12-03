@@ -6,9 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class day2 {
-
+    private static final String filePath = "/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day3/data03.txt";
     public static void main(String[] args) {
-        String filePath = "/Users/mateuszpraski/Documents/java/Advent-of-code-2024/src/main/java/org/example/day2/data02.txt"; // Zmień na właściwą ścieżkę
 
         try {
             List<String> reports = Files.readAllLines(Paths.get(filePath));
