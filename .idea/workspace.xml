@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1e4bfca-09e4-442a-b6a7-c7a6f5f44cf9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/day1/day1part2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/day1/day1part2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,9 +98,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.day1" />
         <item itemvalue="Application.day2part2" />
         <item itemvalue="Application.day2" />
-        <item itemvalue="Application.day1" />
       </list>
     </recent_temporary>
   </component>
@@ -114,6 +114,17 @@
       <updated>1733049153032</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
